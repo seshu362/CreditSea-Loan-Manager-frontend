@@ -1,70 +1,166 @@
-# Getting Started with Create React App
+# Loan Management System
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A comprehensive loan management application with user, verifier, and admin roles. Built with React frontend and Express/SQLite backend.
 
-## Available Scripts
+## Table of Contents
 
-In the project directory, you can run:
+- [Overview](#overview)
+- [Features](#features)
+- [System Architecture](#system-architecture)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+  - [Backend Setup](#backend-setup)
+  - [Frontend Setup](#frontend-setup)
+- [Running the Application](#running-the-application)
+- [API Documentation](#api-documentation)
+- [User Roles](#user-roles)
+- [Default Accounts](#default-accounts)
+- [Screenshots](#screenshots)
 
-### `npm start`
+## Overview
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+This Loan Management System provides a platform for users to apply for loans, verifiers to verify applications, and administrators to manage the overall system. The system handles loan applications, verification processes, approvals/rejections, and tracking of repayments.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Features
 
-### `npm test`
+- *User Authentication*: Secure registration and login system
+- *Role-based Access Control*: Different dashboards and capabilities for users, verifiers, and administrators
+- *Loan Application*: Form for users to apply for loans
+- *Loan Management*: Track, verify, approve, or reject loan applications
+- *Dashboard Statistics*: Visual representations of system data
+- *Search Functionality*: Find loans by various criteria
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## System Architecture
 
-### `npm run build`
+### Frontend
+- React.js
+- React Router for navigation
+- Modern responsive UI
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Backend
+- Node.js with Express
+- SQLite database
+- JWT authentication
+- bcrypt for password hashing
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Prerequisites
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Node.js (v14.x or higher)
+- npm (v6.x or higher)
 
-### `npm run eject`
+## Installation
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Backend Setup
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. Navigate to the backend directory:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+bash
+cd backend
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+2. Install dependencies:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+bash
+npm install
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+3. The database will be automatically created and seeded with sample data when you start the server.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Frontend Setup
 
-### Analyzing the Bundle Size
+1. Navigate to the frontend directory:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+bash
+cd ../frontend
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+2. Install dependencies:
 
-### Advanced Configuration
+bash
+npm install
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
+3. Create a .env file in the frontend directory with the following content:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-### `npm run build` fails to minify
+REACT_APP_API_URL=http://localhost:5000
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+## Running the Application
+
+### Start the Backend Server
+
+bash
+cd backend
+node server.js
+
+
+The server will start running on http://localhost:5000
+
+### Start the Frontend Application
+
+In a new terminal:
+
+bash
+cd frontend
+npm start
+
+
+The React app will start running on http://localhost:3000
+
+## API Documentation
+
+### Authentication Endpoints
+
+- *POST /signup* - Register a new user
+- *POST /login* - Authenticate a user and receive a JWT token
+
+### User Endpoints
+
+- *GET /user/loans* - Get all loans for the logged-in user
+- *POST /loans* - Submit a new loan application
+- *GET /loan-application-form* - Get loan application form structure
+
+### Verifier Endpoints
+
+- *GET /loans/recent* - Get recent loan applications
+- *GET /loans* - Get all loan applications
+- *PUT /loans/:id/verify* - Verify a pending loan
+- *GET /dashboard/verifier* - Get statistics for verifier dashboard
+
+### Admin Endpoints
+
+- *PUT /loans/:id/status* - Update loan status (approve/reject)
+- *GET /dashboard/admin* - Get statistics for admin dashboard
+
+
+
+## User Roles
+
+1. *User*
+   - Can apply for loans
+   - Can view their loan applications and status
+
+2. *Verifier*
+   - Can view all loan applications
+   - Can verify pending applications
+   - Cannot approve or reject loans
+
+3. *Admin*
+   - Has all verifier permissions
+   - Can approve or reject verified loans
+   - Can view system-wide statistics
+
+## Default Accounts
+
+The system is seeded with the following default accounts:
+
+1. *Admin*
+   - Email: admin@loanmanager.com
+   - Password: admin123
+
+2. *Verifier*
+   - Email: verifier@loanmanager.com
+   - Password: verifier123
+
+

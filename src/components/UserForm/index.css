@@ -1,0 +1,137 @@
+/* Loan Application Form Styles */
+.userform-loan-application-container {
+  font-family: Arial, sans-serif;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 4px;
+}
+
+.userform-form-title {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.userform-loan-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.userform-form-row {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+}
+
+.userform-form-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.userform-full-width {
+  width: 100%;
+}
+
+.userform-loan-form label {
+  margin-bottom: 5px;
+  font-size: 14px;
+  color: #333;
+}
+
+.userform-loan-form input,
+.userform-loan-form textarea {
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.userform-loan-form textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.userform-error {
+  border-color: #f44336;
+}
+
+.userform-error-message {
+  color: #f44336;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.userform-checkboxes {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.userform-checkbox-group {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.userform-checkbox-group input[type="checkbox"] {
+  width: auto;
+  margin-top: 3px;
+}
+
+.userform-checkbox-group label {
+  flex: 1;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.userform-submit-button, .userform-cancel-button {
+  align-self: flex-start;
+  background-color: #0d6b1d;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 12px 30px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin: 10px;
+  margin-top: 0px !important;
+}
+
+.userform-submit-button:hover {
+  background-color: #0a5518;
+}
+
+.userform-submit-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .userform-form-row {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .userform-form-group {
+    width: 100%;
+  }
+}
+.userform-back-button {
+  background: none;
+  border: none;
+  color: #0A5210;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 8px 0;
+  margin-right: 20px;
+}
